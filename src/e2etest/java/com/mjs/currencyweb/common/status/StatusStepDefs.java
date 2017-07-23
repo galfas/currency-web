@@ -21,9 +21,9 @@ public class StatusStepDefs {
     assertThat(responseOptions.statusCode(), equalTo(200));
   }
 
-  @And("^app body status is \"([^\"]*)\"$")
-  public void app_body_status_is(String expectedBody) {
+  @And("^app is health$")
+  public void app_body_status_is() {
     String body = responseOptions.body().print();
-    assertThat(expectedBody, equalTo(body));
+    assertThat("ok", equalTo(body));
   }
 }

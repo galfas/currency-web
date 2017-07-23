@@ -59,6 +59,7 @@ dependencies {
   compile 'log4j:log4j:1.2.17'
   compile("org.springframework.boot:spring-boot-devtools")
   compile("org.springframework.boot:spring-boot-starter-web")
+  compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 
   //http client
   compile "io.github.openfeign:feign-core:9.0.0"

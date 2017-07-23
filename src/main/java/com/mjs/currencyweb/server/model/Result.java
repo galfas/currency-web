@@ -2,32 +2,51 @@ package com.mjs.currencyweb.server.model;
 
 import java.math.BigDecimal;
 
-/**
- * Created by marcelosaciloto on 15/07/2017.
- */
+
 public class Result {
-  private String currencyName;
-  private String currencySymbol;
-  private BigDecimal value;
+
+  private String currencyFromName;
+  private String currencyFromSymbol;
+  private String currencyToName;
+  private String currencyToSymbol;
+  private BigDecimal valueFrom;
+  private BigDecimal valueTo;
 
   public Result() {
   }
 
-  public Result(String currencyName, String currencySymbol, BigDecimal value) {
-    this.value = value;
-    this.currencyName = currencyName;
-    this.currencySymbol = currencySymbol;
+  public Result(String currencyFromName, String currencyFromSymbol, BigDecimal valueFrom, String currencyToName,
+                String currencyToSymbol, BigDecimal valueTo) {
+
+    this.currencyFromName = currencyFromName;
+    this.currencyFromSymbol = currencyFromSymbol;
+    this.currencyToName = currencyToName;
+    this.currencyToSymbol = currencyToSymbol;
+    this.valueFrom = valueFrom;
+    this.valueTo = valueTo;
   }
 
-  public BigDecimal getValue() {
-    return value;
+  public String getCurrencyFromName() {
+    return currencyFromName;
   }
 
-  public String getCurrencyName() {
-    return currencyName;
+  public String getCurrencyFromSymbol() {
+    return currencyFromSymbol;
   }
 
-  public String getCurrencySymbol() {
-    return currencySymbol;
+  public String getCurrencyToName() {
+    return currencyToName;
+  }
+
+  public String getCurrencyToSymbol() {
+    return currencyToSymbol;
+  }
+
+  public BigDecimal getValueFrom() {
+    return valueFrom;
+  }
+
+  public BigDecimal getValueTo() {
+    return valueTo;
   }
 }

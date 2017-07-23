@@ -19,10 +19,10 @@ public class OpenExchanteProviderConfiguration {
   private String apiEndpoint;
 
   @Value("${openexchange.api.timeout}")
-  private static int TIME_OUT;
+  private int TIME_OUT;
 
 
-  private static OkHttpClient configureClient() {
+  private OkHttpClient configureClient() {
     OkHttpClient.Builder builder = new OkHttpClient.Builder();
     builder.connectTimeout(TIME_OUT, TimeUnit.MILLISECONDS);
     builder.connectionPool(new ConnectionPool(3, 5, TimeUnit.MINUTES));

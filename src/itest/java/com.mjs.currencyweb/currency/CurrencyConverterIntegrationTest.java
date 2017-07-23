@@ -11,6 +11,7 @@ import com.mjs.currencyweb.AbstractIntegrationTest;
 import com.mjs.currencyweb.server.model.Result;
 import com.mjs.currencyweb.server.utils.CurrencyHelper;
 
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -29,8 +30,12 @@ public class CurrencyConverterIntegrationTest extends AbstractIntegrationTest {
 
     Result result = mapper.readValue(mvcResult.getResponse().getContentAsByteArray(), Result.class);
 
-    assert result.getCurrencyName().equals("Euro");
-    assert result.getCurrencySymbol().equals("EUR");
-    assert result.getValue().equals(CurrencyHelper.convertToBigDecimal(0.871992));
+    assertEquals("Euro", result.getCurrencyToName());
+    assertEquals("EUR", result.getCurrencyToSymbol());
+    assertEquals(convertToBigDecimal(85.75), result.getValueTo());
+  }
+
+  private static BigDecimal convertToBigDecimal(Double value) {
+    return CurrencyHelper.convertToBigDecimal(value).setScale(2);
   }
 }

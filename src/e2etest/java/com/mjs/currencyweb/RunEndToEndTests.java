@@ -17,9 +17,6 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
   features = "src/e2etest/resources/"
-//  format = {"html:build/reports/acceptance-tests/html", "json:build/reports/tests/acceptance-tests/json/index.json"},
-//  glue = {"src/e2etest/java/com/mjs/currencyweb/common/currency"},
-//  strict = true
 )
 public class RunEndToEndTests {
 

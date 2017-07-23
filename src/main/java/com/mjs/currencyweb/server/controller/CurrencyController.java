@@ -2,6 +2,7 @@ package com.mjs.currencyweb.server.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,5 +26,10 @@ public class CurrencyController extends BaseController {
 
 
     return currencyBO.calculateCurrencyFor(fromCurrency, value, toCurrency);
+  }
+
+  @RequestMapping("/availables")
+  public Map<String, String> getCurrency() throws IOException {
+    return currencyBO.getAvailableCurrencies();
   }
 }

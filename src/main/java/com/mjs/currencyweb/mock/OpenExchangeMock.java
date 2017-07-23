@@ -23,10 +23,7 @@ public class OpenExchangeMock {
 
   @GetMapping("/latest.json")
   ResponseEntity<String> fetchLatest(@RequestParam String app_id) throws IOException {
-    if (app_id == null || !app_id.equalsIgnoreCase(MOCK_KEY)) {
-      ResponseEntity responseEntity =
-        new ResponseEntity(new HashMap<String, String>(), HttpStatus.BAD_REQUEST);
-    }
+    validateIp(app_id);
 
     String content = new String(Files.readAllBytes(getFile("latest.json").toPath()));
     return new ResponseEntity(content, HttpStatus.OK);
@@ -34,11 +31,8 @@ public class OpenExchangeMock {
   }
 
   @GetMapping("/currencies.json")
-  ResponseEntity<String> fetchCurrencies(@RequestParam String appId) throws IOException {
-    if (appId == null) {
-      ResponseEntity responseEntity =
-        new ResponseEntity(new HashMap<String, String>(), HttpStatus.BAD_REQUEST);
-    }
+  ResponseEntity<String> fetchCurrencies(@RequestParam String app_id) throws IOException {
+    validateIp(app_id);
 
     String content = new String(Files.readAllBytes(getFile("currencies.json").toPath()));
     return new ResponseEntity(content, HttpStatus.OK);
@@ -47,5 +41,12 @@ public class OpenExchangeMock {
   private File getFile(String fileName) {
     ClassLoader classLoader = this.getClass().getClassLoader();
     return new File(classLoader.getResource(fileName).getFile());
+  }
+
+  private void validateIp(String appId){
+    if (appId == null) {
+      ResponseEntity responseEntity =
+        new ResponseEntity(new HashMap<String, String>(), HttpStatus.BAD_REQUEST);
+    }
   }
 }
