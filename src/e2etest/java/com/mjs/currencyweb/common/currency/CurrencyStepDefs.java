@@ -60,7 +60,7 @@ public class CurrencyStepDefs {
     exception = null;
   }
 
-  @Then("^It Should answer me with \"([^\"]*)\" \"([^\"]*)\"$")
+  @Then("^I Should see \"([^\"]*)\" in \"([^\"]*)\"$")
   public void it_should_answer_with(BigDecimal value, String currencySymbol) {
     assertEquals(200, response.statusCode());
     assertEquals(currencySymbol, response.body().as(Map.class).get("currencyToSymbol"));
