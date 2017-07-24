@@ -1,4 +1,4 @@
-package com.mjs.currencyweb.server.dao;
+package com.mjs.currencyweb.server.dao.openExchangeCurrencyApi;
 
 import java.util.concurrent.TimeUnit;
 

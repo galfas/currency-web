@@ -1,4 +1,4 @@
-package com.mjs.currencyweb.server.dao;
+package com.mjs.currencyweb.server.dao.openExchangeCurrencyApi;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
+import com.mjs.currencyweb.server.dao.CurrencyDao;
 import com.mjs.currencyweb.server.model.Quote;
 import com.mjs.currencyweb.server.utils.CurrencyHelper;
 

@@ -1,13 +1,14 @@
-package com.mjs.currencyweb.server.business;
+package com.mjs.currencyweb.server.business.impl;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.security.InvalidParameterException;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.mjs.currencyweb.server.business.ActivityBO;
+import com.mjs.currencyweb.server.business.CurrencyBO;
 import com.mjs.currencyweb.server.dao.CurrencyDao;
 import com.mjs.currencyweb.server.model.Quote;
 import com.mjs.currencyweb.server.model.Result;
@@ -18,6 +19,8 @@ public class CurrencyBOImpl implements CurrencyBO {
   @Autowired
   private CurrencyDao currencyDao;
 
+  @Autowired
+  private ActivityBO activityBO;
 
   @Override
   public Result calculateCurrencyFor(String currencyFrom, BigDecimal value, String currencyTo) throws IOException {
@@ -29,8 +32,11 @@ public class CurrencyBOImpl implements CurrencyBO {
 
     BigDecimal exchangedValue = calculateExchange(quote, value);
 
-    return new Result(availableCurrencies.get(quote.getCurrencyFrom()), quote.getCurrencyFrom(), value,
+    Result result = new Result(availableCurrencies.get(quote.getCurrencyFrom()), quote.getCurrencyFrom(), value,
       availableCurrencies.get(quote.getCurrencyTo()), quote.getCurrencyTo(), exchangedValue);
+
+    activityBO.save(result);
+    return result;
   }
 
   private void validateCurrencyInput(String currencyFrom, String currencyTo, Map<String, String> availableCurrencies) {

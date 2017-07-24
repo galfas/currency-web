@@ -28,7 +28,7 @@ public class CurrencyController extends BaseController {
     return currencyBO.calculateCurrencyFor(fromCurrency, value, toCurrency);
   }
 
-  @RequestMapping("/availables")
+  @RequestMapping("/currencies")
   public Map<String, String> getCurrency() throws IOException {
     return currencyBO.getAvailableCurrencies();
   }

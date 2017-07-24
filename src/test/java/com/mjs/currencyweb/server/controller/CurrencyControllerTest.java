@@ -20,7 +20,7 @@ import static org.mockito.Mockito.verify;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-public class CurrencyControllerTest extends BaseController {
+public class CurrencyControllerTest {
 
   @Mock
   CurrencyBO currencyBO;

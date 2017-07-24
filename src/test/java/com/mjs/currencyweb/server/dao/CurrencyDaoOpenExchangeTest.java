@@ -14,6 +14,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.mjs.currencyweb.server.dao.openExchangeCurrencyApi.CurrencyDaoOpenExchange;
+import com.mjs.currencyweb.server.dao.openExchangeCurrencyApi.OpenExchangeProvider;
 import com.mjs.currencyweb.server.model.Quote;
 import com.mjs.currencyweb.server.utils.CurrencyHelper;
 
@@ -42,9 +44,9 @@ public class CurrencyDaoOpenExchangeTest {
 
     Assert.assertNotNull(quote);
     Assert.assertEquals(quote.getCurrencyFrom(), "EUR");
-    Assert.assertEquals(quote.getCurrencyFromValue(), CurrencyHelper.convertToBigDecimal(0.871992));
+    Assert.assertEquals(quote.getCurrencyFromValue(), CurrencyHelper.convertToBigDecimal(0.85752));
     Assert.assertEquals(quote.getCurrencyTo(), "BRL");
-    Assert.assertEquals(quote.getCurrencyToValue(), CurrencyHelper.convertToBigDecimal(3.1803));
+    Assert.assertEquals(quote.getCurrencyToValue(), CurrencyHelper.convertToBigDecimal(3.1425));
   }
 
   @Test(expected = IOException.class)

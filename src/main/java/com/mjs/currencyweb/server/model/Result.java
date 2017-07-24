@@ -2,7 +2,6 @@ package com.mjs.currencyweb.server.model;
 
 import java.math.BigDecimal;
 
-
 public class Result {
 
   private String currencyFromName;
